@@ -8,16 +8,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="min-h-screen bg-gray-100">
-        <header className="fixed top-0 left-0 right-0 h-14 bg-white border-b flex items-center px-6 z-50">
-          <Link href="/" className="font-semibold text-lg">
-            🍓 Strawberry Control
-          </Link>
-        </header>
+      <body className="h-screen overflow-hidden">
+        <div className="flex h-full flex-col bg-slate-100">
+          <header className="h-16 flex-shrink-0 border-b bg-red-100 px-6 flex items-center">
+            <Link href="/" className="font-semibold text-lg">
+              🍓 Strawberry Control
+            </Link>
+          </header>
 
-        <main className="pt-20 px-4">
-          <div className="max-w-4xl mx-auto">{children}</div>
-        </main>
+          <main className="flex-1 overflow-hidden px-4 p-4">
+            <div className="mx-auto max-w-4xl h-full">{children}</div>
+          </main>
+        </div>
       </body>
     </html>
   );
