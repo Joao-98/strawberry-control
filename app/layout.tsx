@@ -10,7 +10,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="h-screen overflow-hidden">
         <div className="flex h-full flex-col bg-slate-100">
-          <header className="h-16 flex-shrink-0 border-b bg-red-100 px-6 flex items-center">
+          <header className="h-16 flex-shrink-0 border-b bg-red-50 px-6 flex items-center">
             <Link href="/" className="font-semibold text-lg">
               🍓 Strawberry Control
             </Link>
