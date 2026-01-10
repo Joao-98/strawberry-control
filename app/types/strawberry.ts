@@ -3,4 +3,5 @@ export type StrawberryFormValues = {
   quality: string;
   quantity: string;
   price: string;
+  date: string;
 };

@@ -17,6 +17,7 @@ const initialValues: StrawberryFormValues = {
   quality: "",
   quantity: "",
   price: "",
+  date: "",
 };
 
 export function StrawberryForm({
@@ -39,6 +40,7 @@ export function StrawberryForm({
       [name]: value,
     });
   };
+
   const quantity = Number(values.quantity);
   const price = Number(values.price);
 
@@ -50,7 +52,10 @@ export function StrawberryForm({
   const handleSubmit = () => {
     const stored = JSON.parse(localStorage.getItem(storageKey) || "[]");
 
-    localStorage.setItem(storageKey, JSON.stringify([...stored, values]));
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify([...stored, { ...values, date: new Date().toISOString() }])
+    );
 
     setValues(initialValues);
   };
