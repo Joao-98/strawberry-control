@@ -11,42 +11,39 @@ export function Header() {
   const t = useTranslation();
 
   return (
-    <header className="h-16 flex-shrink-0 border-b bg-red-50 px-6 flex items-center">
-      <div className="max-w-4xl mx-auto w-full flex items-center justify-between">
-        <Link href="/" className="font-semibold text-lg">
+    <header className="border-b bg-white px-4 md:px-6">
+      <div className="max-w-4xl mx-auto py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <Link
+          href="/"
+          className="font-semibold text-base md:text-lg whitespace-nowrap"
+        >
           {t.appName}
         </Link>
 
-        <div className="flex items-center gap-6 text-sm text-gray-600">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
           <div className="flex gap-4">
-            <span>
-              {t.bought}:
-              <strong className="text-gray-900 ml-1">
-                {summary.boughtBoxes}
-              </strong>
+            <span className="flex items-center gap-1">
+              <span>{t.bought}:</span>
+              <strong className="text-gray-900">{summary.boughtBoxes}</strong>
             </span>
 
-            <span>
-              {t.sold}:
-              <strong className="text-gray-900 ml-1">
-                {summary.soldBoxes}
-              </strong>
+            <span className="flex items-center gap-1">
+              <span>{t.sold}:</span>
+              <strong className="text-gray-900">{summary.soldBoxes}</strong>
             </span>
           </div>
 
-          <div>
-            <select
-              value={language}
-              onChange={(e) =>
-                setLanguage(e.target.value as "pt" | "en" | "es")
-              }
-              className="bg-white border rounded-md px-2 py-1 text-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-red-300"
-            >
-              <option value="pt">PT</option>
-              <option value="en">EN</option>
-              <option value="es">ES</option>
-            </select>
-          </div>
+          <div className="hidden md:block text-gray-300">|</div>
+
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value as "pt" | "en" | "es")}
+            className="bg-white border rounded-md px-2 py-1 text-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-red-200"
+          >
+            <option value="pt">PT</option>
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+          </select>
         </div>
       </div>
     </header>
