@@ -84,7 +84,7 @@ export function StrawberryForm({
     refreshSummary();
     setValues(initialValues);
 
-    showToast("Registro salvo com sucesso!");
+    showToast(t.successMessage);
   };
 
   return (
