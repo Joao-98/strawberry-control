@@ -3,6 +3,7 @@ import { useState } from "react";
 import { StrawberryFormValues } from "../types/strawberry";
 import { strawberryQualities } from "../constants/strawberryQualities";
 import { useSummary } from "../context/SummaryContext";
+import { useTranslation } from "../hooks/useTranslation";
 
 type Props = {
   title: string;
@@ -31,6 +32,7 @@ export function StrawberryForm({
 }: Props) {
   const [values, setValues] = useState(initialValues);
   const { refreshSummary } = useSummary();
+  const t = useTranslation();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -86,17 +88,19 @@ export function StrawberryForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Qualidade</label>
+            <label className="block text-sm font-medium mb-1">
+              {t.quality}
+            </label>
             <select
               name="quality"
               value={values.quality}
               onChange={handleChange}
               className="w-full rounded-md border px-3 py-2 text-sm"
             >
-              <option value="">Selecione</option>
+              <option value="">{t.selectBox}</option>
               {strawberryQualities.map((q) => (
                 <option key={q.value} value={q.value}>
-                  {q.label}
+                  {t[q.labelKey as keyof typeof t]}
                 </option>
               ))}
             </select>
@@ -104,7 +108,7 @@ export function StrawberryForm({
 
           <div>
             <label className="block text-sm font-medium mb-1">
-              Quantidade de caixas
+              {t.quantity}
             </label>
             <input
               type="number"
@@ -116,9 +120,7 @@ export function StrawberryForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">
-              Preço por caixa (R$)
-            </label>
+            <label className="block text-sm font-medium mb-1">{t.price}</label>
             <input
               type="number"
               name="price"
@@ -129,7 +131,7 @@ export function StrawberryForm({
           </div>
 
           <div className="pt-4 border-t">
-            <p className="text-sm text-gray-600">Total</p>
+            <p className="text-sm text-gray-600">{t.total}</p>
             <p className="text-xl font-semibold">R$ {total.toFixed(2)}</p>
           </div>
 
