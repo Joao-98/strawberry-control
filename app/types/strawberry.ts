@@ -5,3 +5,12 @@ export type StrawberryFormValues = {
   price: string;
   date: string;
 };
+
+export type Summary = {
+  boughtBoxes: number;
+  soldBoxes: number;
+  totalSpent: number;
+  totalRevenue: number;
+  profit: number;
+  stock: number;
+};

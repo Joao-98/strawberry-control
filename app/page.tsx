@@ -27,7 +27,7 @@ export default function Home() {
         />
 
         <NavCard
-          href="/status"
+          href="/summary"
           title="Relatório"
           description="Visualizar resumo diário"
           icon="📊"
