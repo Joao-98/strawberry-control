@@ -10,10 +10,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="min-h-screen bg-slate-100">
+      <body className="min-h-screen flex flex-col bg-slate-100">
         <LanguageProvider>
           <SummaryProvider>
-            <div className="flex h-full flex-col bg-slate-100">
+            <div className="flex flex-col flex-1 bg-slate-100">
               <Header />
               <main className="flex-1 overflow-y-auto px-4 py-4">
                 <div className="mx-auto max-w-4xl h-full">{children}</div>

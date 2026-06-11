@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { StrawberryFormValues } from "../types/strawberry";
 import { strawberryQualities } from "../constants/strawberryQualities";
@@ -31,6 +32,9 @@ export function StrawberryForm({
   buttonColorClass,
 }: Props) {
   const [values, setValues] = useState(initialValues);
+  const [toast, setToast] = useState<string | null>(null);
+  const [visible, setVisible] = useState(false);
+
   const { refreshSummary } = useSummary();
   const t = useTranslation();
 
@@ -39,10 +43,23 @@ export function StrawberryForm({
   ) => {
     const { name, value } = e.target;
 
-    setValues({
-      ...values,
+    setValues((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
+  };
+
+  const showToast = (message: string) => {
+    setToast(message);
+    setVisible(true);
+
+    setTimeout(() => {
+      setVisible(false);
+    }, 2200);
+
+    setTimeout(() => {
+      setToast(null);
+    }, 2600);
   };
 
   const quantity = Number(values.quantity);
@@ -66,6 +83,8 @@ export function StrawberryForm({
 
     refreshSummary();
     setValues(initialValues);
+
+    showToast("Registro salvo com sucesso!");
   };
 
   return (
@@ -139,14 +158,35 @@ export function StrawberryForm({
             type="button"
             disabled={!isValid}
             onClick={handleSubmit}
-            className={`w-full mt-4 rounded-md py-2 text-sm font-medium text-white transition
-    disabled:opacity-50 disabled:cursor-not-allowed
-    ${buttonColorClass}`}
+            className={`
+              w-full mt-4 rounded-md py-2 text-sm font-medium text-white
+              transition disabled:opacity-50 disabled:cursor-not-allowed
+              ${buttonColorClass}
+            `}
           >
             {submitLabel}
           </button>
         </form>
       </div>
+
+      {/* TOAST */}
+      {toast && (
+        <div
+          className={`
+            fixed bottom-4 right-4
+            flex items-center gap-2
+            px-4 py-2 rounded-md shadow-lg
+            text-sm text-white bg-green-600
+
+            transition-all duration-300 ease-out
+
+            ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"}
+          `}
+        >
+          <span>✔</span>
+          {toast}
+        </div>
+      )}
     </main>
   );
 }
