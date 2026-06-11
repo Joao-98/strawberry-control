@@ -22,6 +22,7 @@ export const translations = {
     price: "Preço por caixa (R$)",
     total: "Total",
     selectBox: "Selecione",
+    successMessage: "Registro salvo com sucesso!",
 
     boughtBoxesName: "Caixas compradas",
     soldBoxesName: "Caixas vendidas",
@@ -61,6 +62,7 @@ export const translations = {
     price: "Price per box (R$)",
     total: "Total",
     selectBox: "Select",
+    successMessage: "Record saved successfully!",
 
     boughtBoxesName: "Bought boxes",
     soldBoxesName: "Sold boxes",
@@ -100,6 +102,7 @@ export const translations = {
     price: "Precio por caja (R$)",
     total: "Total",
     selectBox: "Seleccionar",
+    successMessage: "¡Registro guardado con éxito!",
 
     boughtBoxesName: "Cajas compradas",
     soldBoxesName: "Cajas vendidas",
