@@ -14,7 +14,7 @@ export function Header() {
   const router = useRouter();
 
   const showBackButton =
-    pathname === "/buy" || pathname === "/sell" || pathname === "/status";
+    pathname === "/buy" || pathname === "/sell" || pathname === "/summary";
 
   return (
     <header className="border-b bg-white px-4 md:px-6">
