@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { StrawberryFormValues } from "../types/strawberry";
 import { strawberryQualities } from "../constants/strawberryQualities";
+import { useSummary } from "../context/SummaryContext";
 
 type Props = {
   title: string;
@@ -29,9 +30,10 @@ export function StrawberryForm({
   buttonColorClass,
 }: Props) {
   const [values, setValues] = useState(initialValues);
+  const { refreshSummary } = useSummary();
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
 
@@ -54,9 +56,13 @@ export function StrawberryForm({
 
     localStorage.setItem(
       storageKey,
-      JSON.stringify([...stored, { ...values, date: new Date().toISOString() }])
+      JSON.stringify([
+        ...stored,
+        { ...values, date: new Date().toISOString() },
+      ]),
     );
 
+    refreshSummary();
     setValues(initialValues);
   };
 
