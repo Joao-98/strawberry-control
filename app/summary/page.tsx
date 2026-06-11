@@ -14,7 +14,7 @@ export default function Summary() {
 
       <p className="text-gray-600 mb-6">{t.summaryDesc}</p>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2 pb-10">
         <SummaryCard
           title={t.boughtBoxesName}
           value={String(summary.boughtBoxes)}

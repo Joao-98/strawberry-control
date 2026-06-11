@@ -10,12 +10,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="h-screen overflow-hidden">
+      <body className="min-h-screen bg-slate-100">
         <LanguageProvider>
           <SummaryProvider>
             <div className="flex h-full flex-col bg-slate-100">
               <Header />
-              <main className="flex-1 overflow-hidden px-4 p-4">
+              <main className="flex-1 overflow-y-auto px-4 py-4">
                 <div className="mx-auto max-w-4xl h-full">{children}</div>
               </main>
             </div>
